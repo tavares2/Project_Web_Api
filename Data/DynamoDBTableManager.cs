@@ -35,7 +35,7 @@ namespace LGC_CodeChallenge.Data
             var createTableRequest = BuildCreateTableRequest<T>(tableName);
 
             //Create the table
-            await _dynamoDbClient.CreateTableAsync(createTableRequest);
+            var createTableResponse = await _dynamoDbClient.CreateTableAsync(createTableRequest);
             Console.WriteLine($"Table {tableName} created successfully.");
         }
 
@@ -59,7 +59,7 @@ namespace LGC_CodeChallenge.Data
             var hashKeyName = hashKeyProperty.Name;
             var hashKeyType = GetScalarAttributeType(hashKeyProperty.PropertyType);
 
-            return new CreateTableRequest
+            var createTableRequest = new CreateTableRequest
             {
                 TableName = tableName,
                 AttributeDefinitions = new List<AttributeDefinition>
@@ -72,6 +72,17 @@ namespace LGC_CodeChallenge.Data
             },
                
             };
+
+            // Add other properties marked with [DynamoDBProperty] to AttributeDefinitions
+            var dynamoDbProperties = GetDynamoDbProperties<T>();
+            foreach (var prop in dynamoDbProperties)
+            {
+                var attributeName = prop.Name;
+                var attributeType = GetScalarAttributeType(prop.PropertyType);
+                createTableRequest.AttributeDefinitions.Add(new AttributeDefinition(attributeName, attributeType));
+            }
+
+            return createTableRequest;
         }
 
        
@@ -83,11 +94,19 @@ namespace LGC_CodeChallenge.Data
                 .FirstOrDefault(p => p.GetCustomAttribute<DynamoDBHashKeyAttribute>() != null);
         }
 
+        private static List<PropertyInfo> GetDynamoDbProperties<T>() where T : class
+        {
+            // Look for properties with [DynamoDBProperty]
+            return typeof(T).GetProperties()
+                .Where(p => p.GetCustomAttribute<DynamoDBPropertyAttribute>() != null)
+                .ToList();
+        }
+
         private static ScalarAttributeType GetScalarAttributeType(Type type)
         {
             // Map .NET types to DynamoDB scalar attribute types
             if (type == typeof(string)) return ScalarAttributeType.S;
-            if (type == typeof(Guid)) return ScalarAttributeType.S; // DynamoDB does not natively support Guid; treat as string
+            if (type == typeof(Guid)) return ScalarAttributeType.S; // DynamoDB does not natively support Guid
             if (type == typeof(int) || type == typeof(long)) return ScalarAttributeType.N;
             if (type == typeof(decimal) || type == typeof(double)) return ScalarAttributeType.N;
             if (type == typeof(byte[])) return ScalarAttributeType.B;
