@@ -6,14 +6,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
     <Folder Include="Middleware\" />
-    <Folder Include="Services\" />
     <Folder Include="Repositories\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.301" />
   </ItemGroup>
   <Import Project=".paket\Paket.Restore.targets" />
 </Project>
