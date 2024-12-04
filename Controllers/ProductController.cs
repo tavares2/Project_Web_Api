@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using LGC_CodeChallenge.Interfaces;
 using LGC_CodeChallenge.Models;
 using LGC_CodeChallenge.Services;
 using Microsoft.AspNetCore.Http;
@@ -6,20 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LGC_CodeChallenge.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
-        public ProductController(ProductService productService)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
         }
 
-        // GET: api/product/{id}
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetProduct(string id)
+        // GET: api/products/{id}
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> GetProduct(Guid id)
         {
             var product = await _productService.GetProductAsync(id);
             if (product == null)
@@ -28,25 +29,40 @@ namespace LGC_CodeChallenge.Controllers
             }
             return Ok(product);
         }
-        // POST: api/product
+
+        // GET: api/products
+        [HttpGet]
+        public async Task<IActionResult> GetProductsList()
+        {
+            try
+            {
+                var products = await _productService.GetAllProductsAsync();
+                return Ok(products); // Returns 200 OK with the list of products
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "An error occurred while retrieving products.", details = ex.Message });
+            }
+        }
+        // POST: api/products
         [HttpPost]
         public async Task<IActionResult> CreateProduct(Product product)
         {
             try
             {
                 await _productService.AddProductAsync(product);
-                return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+                return CreatedAtAction(nameof(GetProduct), new { id = product.Id.ToString() }, product);
             }
             catch (ValidationException ex)
             {
                 return BadRequest(ex.Errors);
             }
         }
-        // PUT: api/product/{guid}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(string id, Product product)
+        // PUT: api/products/{id}
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> UpdateProduct(Guid id, Product product)
         {
-            if (id != product.Id.ToString())
+            if (id != product.Id)
             {
                 return BadRequest("Product ID in the URL does not match the Product ID in the body.");
             }
@@ -66,9 +82,9 @@ namespace LGC_CodeChallenge.Controllers
                 return BadRequest(ex.Errors);
             }
         }
-        // DELETE: api/product/{id}
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(string id)
+        // DELETE: api/products/{id}
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> DeleteProduct(Guid id)
         {
             var existingProduct = await _productService.GetProductAsync(id);
             if (existingProduct == null)

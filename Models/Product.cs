@@ -1,11 +1,12 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
+using LGC_CodeChallenge.Interfaces;
 namespace LGC_CodeChallenge.Models
 
 {
     [DynamoDBTable("ProductTable")]
-    public class Product
+    public class Product : IEntityBase
     {
-        [DynamoDBHashKey]
+        [DynamoDBHashKey("id")]
         public Guid Id { get; set; }
 
         [DynamoDBProperty]

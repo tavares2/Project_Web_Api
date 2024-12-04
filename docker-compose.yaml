@@ -1,17 +1,14 @@
 version: '3.8'
 services:
   localstack:
-    image: localstack/localstack:latest  # Docker image for LocalStack
+    image: localstack/localstack  # Docker image for LocalStack
     container_name: LGC_Code_Challenge_LocalStack
     ports:
       - "4566:4566"  # Expose the gateway port
-      - "4510-4559:4510-4559"  # Additional service ports
     environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - LOCALSTACK_DOCKER_HOST=unix:///var/run/docker.sock
       - SERVICES=dynamodb  # Specify the LocalStack services to run
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"  # Allow LocalStack to access Docker
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]  # Check LocalStack's health
-      interval: 30s  # Run health check every 30 seconds
-      timeout: 10s  # Health check timeout
-      retries: 3  # Retry up to 3 times before marking as unhealthy
+    
