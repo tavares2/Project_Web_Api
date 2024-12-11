@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using LGC_CodeChallenge.Contracts;
+using LGC_Code_Challenge.Contracts;
 using LGC_CodeChallenge.Models;
 
 

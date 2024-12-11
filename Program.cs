@@ -5,7 +5,7 @@ using Amazon.DynamoDBv2.Model;
 using Amazon.Runtime;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using LGC_CodeChallenge.Contracts;
+using LGC_Code_Challenge.Contracts;
 using LGC_CodeChallenge.Data;
 using LGC_CodeChallenge.Interfaces;
 using LGC_CodeChallenge.Models;

@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
-using LGC_CodeChallenge.Contracts;
+using LGC_Code_Challenge.Contracts;
+
 
 namespace LGC_CodeChallenge.Validators
 {
