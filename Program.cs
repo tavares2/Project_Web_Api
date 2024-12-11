@@ -4,6 +4,8 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.Model;
 using Amazon.Runtime;
 using FluentValidation;
+using FluentValidation.AspNetCore;
+using LGC_CodeChallenge.Contracts;
 using LGC_CodeChallenge.Data;
 using LGC_CodeChallenge.Interfaces;
 using LGC_CodeChallenge.Models;
@@ -31,41 +33,6 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddDefaultAWSOptions(awsOptions);
 }
 
-// Add AWS DynamoDB Client
-//builder.Services.AddSingleton<IAmazonDynamoDB>(sp =>
-//{
-//    var configuration = sp.GetRequiredService<IConfiguration>();
-//
-//
-//    // Extract AWS region and service URL from configuration
-//    var region = configuration.GetSection("AWS:Region").Value;
-//    
-//
-//    // Set the credentials (for LocalStack or AWS)
-//    var awsCredentials = new BasicAWSCredentials(
-//         configuration.GetSection("AWS:Credentials:AccessKeyId").Value,
-//         configuration.GetSection("AWS:Credentials:SecretAccessKey").Value
-//     );
-//
-//    // Set the Service URL for LocalStack if available
-//    var serviceUrl = configuration.GetSection("AWS:ServiceURL").Value;
-//
-//    Console.WriteLine($"DynamoDB Service URL: {serviceUrl}");
-//
-//
-//    // Set the Service URL (for LocalStack or other custom endpoints)
-//    var clientConfig = new AmazonDynamoDBConfig
-//    {
-//        ServiceURL = serviceUrl,  // Set LocalStack or custom service URL
-//        RegionEndpoint = RegionEndpoint.EUWest1
-//    };
-//    
-//
-//        return new AmazonDynamoDBClient(awsCredentials, clientConfig);
-//    
-//    
-//}
-//    );
 
 builder.Services.AddAWSService<IAmazonDynamoDB>();
 
@@ -80,7 +47,15 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 // Add validators
-builder.Services.AddScoped<IValidator<Product>, ProductValidator>();
+
+builder.Services.AddFluentValidationAutoValidation() // Enables server-side validation
+                .AddFluentValidationClientsideAdapters(); // Enables client-side validation (optional)
+
+// Register all validators in the same assembly as ProductRequestValidator
+builder.Services.AddValidatorsFromAssemblyContaining<ProductRequestValidator>();
+
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
 var app = builder.Build();

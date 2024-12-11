@@ -1,6 +1,9 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
+using LGC_CodeChallenge.Contracts;
 using LGC_CodeChallenge.Interfaces;
 using LGC_CodeChallenge.Models;
+using LGC_CodeChallenge.Validators;
 using LGC_CodeChallenge.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +15,14 @@ namespace LGC_CodeChallenge.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly IMapper _mapper;
+        
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
+            
         }
 
         // GET: api/products/{id}
@@ -27,7 +34,9 @@ namespace LGC_CodeChallenge.Controllers
             {
                 return NotFound($"Product with ID {id} not found.");
             }
-            return Ok(product);
+
+            var productResponse = _mapper.Map<ProductResponse>(product);
+            return Ok(productResponse);
         }
 
         // GET: api/products
@@ -37,7 +46,7 @@ namespace LGC_CodeChallenge.Controllers
             try
             {
                 var products = await _productService.GetAllProductsAsync();
-                return Ok(products); // Returns 200 OK with the list of products
+                return Ok(products.Select(product => _mapper.Map<ProductResponse>(product))); // Returns 200 OK with the list of products
             }
             catch (Exception ex)
             {
@@ -46,42 +55,65 @@ namespace LGC_CodeChallenge.Controllers
         }
         // POST: api/products
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(Product product)
+        public async Task<IActionResult> CreateProduct(ProductRequest request)
         {
+            // Ensure the DTO is valid
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var product = _mapper.Map<Product>(request);
+
+            product.Id = Guid.NewGuid();
+
             try
             {
                 await _productService.AddProductAsync(product);
-                return CreatedAtAction(nameof(GetProduct), new { id = product.Id.ToString() }, product);
+                var productResponse = _mapper.Map<ProductResponse>(product);
+                return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productResponse);
             }
             catch (ValidationException ex)
             {
                 return BadRequest(ex.Errors);
             }
+            
         }
         // PUT: api/products/{id}
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> UpdateProduct(Guid id, Product product)
+        public async Task<IActionResult> UpdateProduct(Guid id, ProductRequest request)
         {
-            if (id != product.Id)
+            // Ensure the DTO is valid
+            if (!ModelState.IsValid)
             {
-                return BadRequest("Product ID in the URL does not match the Product ID in the body.");
+               return BadRequest(ModelState);
             }
+
+            // Fetch the existing product
+            var existingProduct = await _productService.GetProductAsync(id);
+            if (existingProduct == null)
+            {
+                return NotFound($"Product with ID {id} not found.");
+            }
+
+
+            // Attempt to update the product
             try
             {
-                var existingProduct = await _productService.GetProductAsync(id);
-                if (existingProduct == null)
-                {
-                    return NotFound($"Product with ID {id} not found.");
-                }
+                // Map changes from the DTO to the existing product
+                _mapper.Map(request, existingProduct);
 
-                await _productService.AddProductAsync(product); // Save replaces the existing entry
-                return NoContent(); // 204 - No Content
+                await _productService.UpdateProductAsync(existingProduct);
+
+                var productResponse = _mapper.Map<ProductResponse>(existingProduct);
+                return CreatedAtAction(nameof(GetProduct), new { id = existingProduct.Id }, productResponse);
             }
             catch (ValidationException ex)
             {
-                return BadRequest(ex.Errors);
+                return BadRequest(ex.Errors); // Return validation errors if any
             }
         }
+
         // DELETE: api/products/{id}
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteProduct(Guid id)

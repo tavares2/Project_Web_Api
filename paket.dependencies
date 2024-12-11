@@ -1,6 +1,7 @@
 source https://api.nuget.org/v3/index.json
 
 storage: none
+nuget AutoMapper 13.0.1
 nuget AWSSDK.Core 3.7.400.20
 nuget AWSSDK.DynamoDBv2 3.7.400.20
 nuget FluentValidation.AspNetCore 11.3.0

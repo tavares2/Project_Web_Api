@@ -2,3 +2,4 @@ AWSSDK.Core
 AWSSDK.DynamoDBv2
 FluentValidation.AspNetCore
 Swashbuckle.AspNetCore
+AutoMapper
