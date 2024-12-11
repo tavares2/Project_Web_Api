@@ -1,0 +1,6 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+nuget Microsoft.Extensions.Configuration.Binder 9.0.0
+nuget Microsoft.Extensions.DependencyInjection 9.0.0
+nuget Microsoft.Extensions.Http 9.0.0

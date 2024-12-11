@@ -1,0 +1,31 @@
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_CodeChallenge.SDK.deps.json
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_CodeChallenge.SDK.dll
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_CodeChallenge.SDK.pdb
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_CodeChallenge.Contracts.dll
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_CodeChallenge.Contracts.pdb
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.csproj.AssemblyReference.cache
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.AssemblyInfoInputs.cache
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.AssemblyInfo.cs
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.csproj.CoreCompileInputs.cache
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_Code.B9776F16.Up2Date
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.dll
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\refint\LGC_CodeChallenge.SDK.dll
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.pdb
+C:\Users\pedro tavares\Desktop\Projeto Web Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\ref\LGC_CodeChallenge.SDK.dll
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_CodeChallenge.SDK.deps.json
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_CodeChallenge.SDK.dll
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_CodeChallenge.SDK.pdb
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_Code_Challenge.Contracts.dll
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\bin\Debug\net8.0\LGC_Code_Challenge.Contracts.pdb
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.csproj.AssemblyReference.cache
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.AssemblyInfoInputs.cache
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.AssemblyInfo.cs
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.csproj.CoreCompileInputs.cache
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.sourcelink.json
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_Code.B9776F16.Up2Date
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.dll
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\refint\LGC_CodeChallenge.SDK.dll
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\LGC_CodeChallenge.SDK.pdb
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_CodeChallenge.SDK\obj\Debug\net8.0\ref\LGC_CodeChallenge.SDK.dll

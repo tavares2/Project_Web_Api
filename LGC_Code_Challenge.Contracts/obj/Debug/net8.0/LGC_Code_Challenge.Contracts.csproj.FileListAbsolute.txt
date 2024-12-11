@@ -1,0 +1,12 @@
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\bin\Debug\net8.0\LGC_Code_Challenge.Contracts.deps.json
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\bin\Debug\net8.0\LGC_Code_Challenge.Contracts.dll
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\bin\Debug\net8.0\LGC_Code_Challenge.Contracts.pdb
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\LGC_Code_Challenge.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\LGC_Code_Challenge.Contracts.AssemblyInfoInputs.cache
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\LGC_Code_Challenge.Contracts.AssemblyInfo.cs
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\LGC_Code_Challenge.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\LGC_Code_Challenge.Contracts.sourcelink.json
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\LGC_Code_Challenge.Contracts.dll
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\refint\LGC_Code_Challenge.Contracts.dll
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\LGC_Code_Challenge.Contracts.pdb
+C:\Users\pedro tavares\Desktop\Project_Web_Api\LGC_Code_Challenge.Contracts\obj\Debug\net8.0\ref\LGC_Code_Challenge.Contracts.dll
