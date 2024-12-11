@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using LGC_CodeChallenge.Contracts;
+using LGC_Code_Challenge.Contracts;
 using LGC_CodeChallenge.Interfaces;
 using LGC_CodeChallenge.Models;
 using LGC_CodeChallenge.Validators;

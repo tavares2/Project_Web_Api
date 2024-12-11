@@ -8,5 +8,8 @@
   <ItemGroup>
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.301" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LGC_Code_Challenge.Contracts\LGC_Code_Challenge.Contracts.csproj" />
+  </ItemGroup>
   <Import Project=".paket\Paket.Restore.targets" />
 </Project>

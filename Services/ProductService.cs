@@ -1,6 +1,6 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using FluentValidation;
-using LGC_CodeChallenge.Contracts;
+using LGC_Code_Challenge.Contracts;
 using LGC_CodeChallenge.Data;
 using LGC_CodeChallenge.Interfaces;
 using LGC_CodeChallenge.Models;

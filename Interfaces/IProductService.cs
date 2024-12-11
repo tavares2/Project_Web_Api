@@ -1,4 +1,4 @@
-﻿using LGC_CodeChallenge.Contracts;
+﻿using LGC_Code_Challenge.Contracts;
 using LGC_CodeChallenge.Models;
 
 namespace LGC_CodeChallenge.Interfaces
