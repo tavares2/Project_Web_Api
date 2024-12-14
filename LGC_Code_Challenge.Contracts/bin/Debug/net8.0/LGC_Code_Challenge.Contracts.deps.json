@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "LGC_Code_Challenge.Contracts/1.0.0": {
+        "runtime": {
+          "LGC_Code_Challenge.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LGC_Code_Challenge.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
