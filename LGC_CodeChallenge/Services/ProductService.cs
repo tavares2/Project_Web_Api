@@ -19,32 +19,64 @@ namespace LGC_CodeChallenge.Services
             _productRepository = productRepository;
         }
 
-        public async Task AddProductAsync(Product product)
+        public async Task<Product> AddProductAsync(Product product)
         {
+            if (product == null)
+            {
+                throw new ArgumentNullException(nameof(product));
+            }
+
             await _productRepository.AddAsync(product);
+
+            return product;
         }
 
         public async Task DeleteProductAsync(Guid id)
         {
+            // Check if the product exists
+            var product = await _productRepository.GetAsync(id);
+            if (product == null)
+            {
+                throw new KeyNotFoundException($"Product with ID {id} not found.");
+            }
+
             await _productRepository.DeleteAsync(id);
         }
 
         public async Task<Product> GetProductAsync(Guid id)
         {
             var product = await _productRepository.GetAsync(id);
+            if (product == null)
+            {
+                throw new KeyNotFoundException($"Product not found");
+            }
             return product;
             
         }
 
         public async Task<List<Product>> GetAllProductsAsync()
         {
+
             var products = await _productRepository.GetAllAsync();
             return products;
         }
 
-        public async Task UpdateProductAsync(Product product)
+        public async Task<Product> UpdateProductAsync(Product product)
         {
+            if (product == null)
+            {
+                throw new ArgumentNullException(nameof(product));
+            }
+            var existingProduct = await _productRepository.GetAsync(product.Id);
+
+            if (existingProduct == null)
+            {
+                throw new KeyNotFoundException($"Product with ID {product.Id} not found.");
+            }
+
             await _productRepository.UpdateAsync(product);
+
+            return product;
         }
     }
 }

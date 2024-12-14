@@ -17,6 +17,11 @@ namespace LGC_CodeChallenge.Repositories
         {
             // Retrieve the product from DynamoDB by its ID
             var entity = await _dynamoDbContext.LoadAsync<T>(id);
+            if (entity == null)
+            {
+                throw new KeyNotFoundException($"Product with ID {id} not found.");
+            }
+
             return entity;
         }
 

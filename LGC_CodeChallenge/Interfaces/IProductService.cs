@@ -7,8 +7,8 @@ namespace LGC_CodeChallenge.Interfaces
     {
         Task<Product> GetProductAsync(Guid id);
         Task<List<Product>> GetAllProductsAsync();
-        Task AddProductAsync(Product product);
-        Task UpdateProductAsync(Product product);
+        Task<Product> AddProductAsync(Product product);
+        Task<Product> UpdateProductAsync(Product product);
         Task DeleteProductAsync(Guid id);
     }
 }
