@@ -1,0 +1,3 @@
+System.Diagnostics.EventLog,9.0,Transitive,Main,false,true,false,true,
+Castle.Core,5.1.1,Transitive,Main,false,true,false,true,
+Moq,4.20.72,Direct,Main,false,true,false,true,
