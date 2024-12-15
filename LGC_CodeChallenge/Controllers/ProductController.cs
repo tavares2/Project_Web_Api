@@ -43,15 +43,16 @@ namespace LGC_CodeChallenge.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProductsList()
         {
-            try
+            var products = await _productService.GetAllProductsAsync();
+
+            if (products == null || !products.Any())
             {
-                var products = await _productService.GetAllProductsAsync();
-                return Ok(products.Select(product => _mapper.Map<ProductResponse>(product))); // Returns 200 OK with the list of products
+                return Ok(new List<ProductResponse>());
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { error = "An error occurred while retrieving products.", details = ex.Message });
-            }
+
+            var response = _mapper.Map<List<ProductResponse>>(products);
+
+            return Ok(response);
         }
         // POST: api/products
         [HttpPost]
@@ -93,7 +94,7 @@ namespace LGC_CodeChallenge.Controllers
             var existingProduct = await _productService.GetProductAsync(id);
             if (existingProduct == null)
             {
-                return NotFound($"Product with ID {id} not found.");
+                return BadRequest("Invalid product request.");
             }
 
 
@@ -106,11 +107,15 @@ namespace LGC_CodeChallenge.Controllers
                 await _productService.UpdateProductAsync(existingProduct);
 
                 var productResponse = _mapper.Map<ProductResponse>(existingProduct);
-                return CreatedAtAction(nameof(GetProduct), new { id = existingProduct.Id }, productResponse);
+                return Ok(productResponse);
             }
             catch (ValidationException ex)
             {
-                return BadRequest(ex.Errors); // Return validation errors if any
+                return BadRequest(ex.Message); // Return validation errors if any
+            }
+            catch 
+            {
+                return StatusCode(500, "An unexpected error occured.");
             }
         }
 
