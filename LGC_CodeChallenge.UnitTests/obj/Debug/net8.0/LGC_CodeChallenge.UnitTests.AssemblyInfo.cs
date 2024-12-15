@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LGC_CodeChallenge.UnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99c2f93eb3267e5bfafd1804561eb9ae47661e8e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fadf57366e98987442010afe696193f9ffb10b2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("LGC_CodeChallenge.UnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LGC_CodeChallenge.UnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
