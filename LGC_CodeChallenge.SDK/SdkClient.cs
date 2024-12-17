@@ -1,5 +1,6 @@
 ﻿using LGC_CodeChallenge.SDK.Exceptions;
 using LGC_CodeChallenge.SDK.Interfaces;
+using System.Net;
 using System.Text.Json;
 
 namespace LGC_CodeChallenge.SDK
@@ -21,17 +22,24 @@ namespace LGC_CodeChallenge.SDK
             {
                 var problemDetails = await ProblemDetailException.DeserializeAsync(response);
                 throw new ProblemDetailException(
-                    response.StatusCode,
+                    (HttpStatusCode)response.StatusCode,
                     problemDetails?.Type,
                     problemDetails?.Title,
                     problemDetails?.Detail,
                     problemDetails?.Instance
                 );
             }
+
             //response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<TResponse>(content);
+
+            
+
+
+            var result = JsonSerializer.Deserialize<TResponse>(content);
+
+            return result;
         }
 
         public async Task<List<TResponse>> GetAllAsync<TResponse>(string endpoint)
@@ -42,7 +50,7 @@ namespace LGC_CodeChallenge.SDK
             {
                 var problemDetails = await ProblemDetailException.DeserializeAsync(response);
                 throw new ProblemDetailException(
-                    response.StatusCode,
+                    (HttpStatusCode)response.StatusCode,
                     problemDetails?.Type,
                     problemDetails?.Title,
                     problemDetails?.Detail,
@@ -66,7 +74,7 @@ namespace LGC_CodeChallenge.SDK
             {
                 var problemDetails = await ProblemDetailException.DeserializeAsync(response);
                 throw new ProblemDetailException(
-                    response.StatusCode,
+                    (HttpStatusCode)response.StatusCode,
                     problemDetails?.Type,
                     problemDetails?.Title,
                     problemDetails?.Detail,
@@ -89,7 +97,7 @@ namespace LGC_CodeChallenge.SDK
             {
                 var problemDetails = await ProblemDetailException.DeserializeAsync(response);
                 throw new ProblemDetailException(
-                    response.StatusCode,
+                    (HttpStatusCode)response.StatusCode,
                     problemDetails?.Type,
                     problemDetails?.Title,
                     problemDetails?.Detail,
@@ -109,7 +117,7 @@ namespace LGC_CodeChallenge.SDK
             {
                 var problemDetails = await ProblemDetailException.DeserializeAsync(response);
                 throw new ProblemDetailException(
-                    response.StatusCode,
+                    (HttpStatusCode)response.StatusCode,
                     problemDetails?.Type,
                     problemDetails?.Title,
                     problemDetails?.Detail,

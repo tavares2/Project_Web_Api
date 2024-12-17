@@ -1,0 +1,443 @@
+{
+  "uuid": "0d1dcf6c-84f0-409d-b2fc-43ef9b7fbd4d",
+  "lastMigration": 33,
+  "name": "LGC CodeChallenge TestApi",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "0ef139e7-cc68-4301-a93a-89854f9b2753",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/products/:id",
+      "responses": [
+        {
+          "uuid": "26aafc59-4199-41d3-89ef-afbe7f9ecf1e",
+          "body": "{\r\n  \"id\": \"550e8400-e29b-41d4-a716-446655440004\",\r\n  \"name\": \"Mock Product\",\r\n  \"description\": \"This is a mock product.\",\r\n  \"price\": 99.99\r\n}\r\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "789e0278-d963-428b-b658-caf639336cc9",
+          "body": "{\r\n  \"type\": \"https://example.com/probs/product-not-found\",\r\n  \"title\": \"Product Not Found\",\r\n  \"status\": 404,\r\n  \"detail\": \"The product with the provided ID does not exist.\",\r\n  \"instance\": \"/api/products/{id}\"\r\n}\r\n",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "550e8400-e29b-41d4-a716-446655440004",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "30199ad9-31de-40c5-942a-2f2afb465938",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/products",
+      "responses": [
+        {
+          "uuid": "5fd1c047-d383-49f1-b145-24295145c48f",
+          "body": "{\r\n  \"type\": \"https://example.com/probs/invalid-query\",\r\n  \"title\": \"Invalid query parameter\",\r\n  \"status\": 400,\r\n  \"detail\": \"The 'filter' query parameter is invalid.\",\r\n  \"instance\": \"/api/products\"\r\n}\r\n\r\n",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "filter",
+              "value": "invalid",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ebb2dfc1-8fd5-4f52-ab0a-3c8cb8b7bab7",
+          "body": "[\n  {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440001\",\n    \"name\": \"Product 1\",\n    \"description\": \"Product 1 description\",\n    \"price\": 50.0\n  },\n  {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440002\",\n    \"name\": \"Product 2\",\n    \"description\": \"Product 2 description\",\n    \"price\": 75.0\n  },\n  {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440003\",\n    \"name\": \"Product 3\",\n    \"description\": \"Product 3 description\",\n    \"price\": 30\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "ae7eaad1-7733-4374-b3bb-ebfe1fd8c6de",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "api/products",
+      "responses": [
+        {
+          "uuid": "fb3a6fd4-b64b-43ce-aeed-78c5c5d0b7fc",
+          "body": "{\r\n  \"id\": \"550e8400-e29b-41d4-a716-446655440004\",\r\n  \"name\": \"New Product\",\r\n  \"description\": \"A new product\",\r\n  \"price\": 100.0\r\n}\r\n\r\n",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "a7e42a68-a019-4323-9207-fc095a3589ca",
+          "body": "{\r\n  \"type\": \"https://example.com/probs/invalid-product\",\r\n  \"title\": \"Invalid Product\",\r\n  \"status\": 400,\r\n  \"detail\": \"The product data provided is invalid. Please check the values and try again.\",\r\n  \"instance\": \"/api/products\"\r\n}\r\n",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "invalidData",
+              "value": "true",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "578fe48d-f680-4ca1-9d22-e4c007e9e802",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "api/products/:id",
+      "responses": [
+        {
+          "uuid": "3bf10078-36e0-446f-90b6-3385150fe413",
+          "body": "{\r\n  \"id\": \"550e8400-e29b-41d4-a716-446655440004\",\r\n  \"name\": \"Updated Product\",\r\n  \"description\": \"Updated description\",\r\n  \"price\": 150.0\r\n}\r\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "550e8400-e29b-41d4-a716-446655440004",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4378ff80-f472-4092-8dff-155233c84176",
+          "body": "{\r\n  \"type\": \"https://example.com/probs/resource-not-found\",\r\n  \"title\": \"Resource Not Found\",\r\n  \"status\": 404,\r\n  \"detail\": \"The product to update could not be found.\",\r\n  \"instance\": \"/api/products/550e8400-e29b-41d4-a716-446655440004\"\r\n}\r\n",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "2b8f18b9-379d-4a54-a3fa-7d7ebce5d68d",
+      "type": "http",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "api/products/:id",
+      "responses": [
+        {
+          "uuid": "7adaac96-72b5-42bf-9523-dc0010fdee33",
+          "body": "{}  // Empty response body for No Content\r\n",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "550e8400-e29b-41d4-a716-446655440004",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "a5094432-e679-453c-b77d-15eb9e2631c5",
+          "body": "{\r\n  \"type\": \"https://example.com/probs/resource-not-found\",\r\n  \"title\": \"Resource Not Found\",\r\n  \"status\": 404,\r\n  \"detail\": \"The product to delete could not be found.\",\r\n  \"instance\": \"/api/products/550e8400-e29b-41d4-a716-446655440004\"\r\n}\r\n",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "550e8400-e29b-41d4-a716-446655440004",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "0ef139e7-cc68-4301-a93a-89854f9b2753"
+    },
+    {
+      "type": "route",
+      "uuid": "30199ad9-31de-40c5-942a-2f2afb465938"
+    },
+    {
+      "type": "route",
+      "uuid": "ae7eaad1-7733-4374-b3bb-ebfe1fd8c6de"
+    },
+    {
+      "type": "route",
+      "uuid": "578fe48d-f680-4ca1-9d22-e4c007e9e802"
+    },
+    {
+      "type": "route",
+      "uuid": "2b8f18b9-379d-4a54-a3fa-7d7ebce5d68d"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
