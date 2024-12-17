@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mockoon-api:
+    build: .  # Build from Dockerfile in the current directory
+    container_name: mockoon-api
+    ports:
+      - "3000:3000" # Expose port 3000 for Mockoon's API
+    volumes:
+      - ./LGC_CodeChallenge_TestApi.json:/app/LGC_CodeChallenge_TestApi.json # Map the environment file
+    networks:
+      - mockoon-network
+networks:
+  mockoon-network:
+    driver: bridge

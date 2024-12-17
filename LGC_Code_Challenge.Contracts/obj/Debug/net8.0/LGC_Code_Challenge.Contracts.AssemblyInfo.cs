@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LGC_Code_Challenge.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c95bd8bc26464741100ad1463df1b4e0c97c4409")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a32de27283b878fa50f67badadf99130c982e129")]
 [assembly: System.Reflection.AssemblyProductAttribute("LGC_Code_Challenge.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LGC_Code_Challenge.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -31,8 +31,23 @@ namespace LGC_CodeChallenge.SDK.Exceptions
         // Static helper method to deserialize problem details from the response
         public static async Task<ProblemDetail> DeserializeAsync(HttpResponseMessage response)
         {
-            var content = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<ProblemDetail>(content);
+            try
+            {
+                var content = await response.Content.ReadAsStringAsync();
+
+                // Attempt to deserialize the content to a ProblemDetail object
+                var problemDetails = JsonSerializer.Deserialize<ProblemDetail>(content, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true // Handle case insensitivity
+                });
+
+                return problemDetails;
+            }
+            catch (JsonException ex)
+            {
+                // Log or handle deserialization errors here if needed
+                throw new Exception("Failed to deserialize problem details.", ex);
+            }
         }
     }
 }

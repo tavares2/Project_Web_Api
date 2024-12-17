@@ -12,5 +12,6 @@ namespace LGC_CodeChallenge.SDK.Models
         public string Title { get; set; }
         public string Detail { get; set; }
         public string Instance { get; set; }
+        public int Status { get; set; }
     }
 }
